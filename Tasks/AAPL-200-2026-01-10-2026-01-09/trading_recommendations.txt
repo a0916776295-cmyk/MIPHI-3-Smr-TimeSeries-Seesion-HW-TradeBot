@@ -1,0 +1,6 @@
+<b>ТОРГОВЫЕ РЕКОМЕНДАЦИИ ДЛЯ AAPL</b>
+
+<b><span style='color: red'>[TRADE] 2026-01-19 AAPL BUY 35.83 profit:0.00</span></b>
+<b><span style='color: green'>[TRADE] 2026-01-19 AAPL SELL 35.83 profit:0.00</span></b>
+
+<b>[SUMMARY] Total_profit: 0.00</b>

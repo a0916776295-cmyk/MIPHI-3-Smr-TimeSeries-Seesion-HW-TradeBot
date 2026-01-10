@@ -1,0 +1,10 @@
+<b>ТОРГОВЫЕ РЕКОМЕНДАЦИИ ДЛЯ WMT</b>
+
+<b><span style='color: red'>[TRADE] 2026-01-21 WMT BUY 131.64 profit:9.27</span></b>
+<b><span style='color: green'>[TRADE] 2026-01-23 WMT SELL 140.91 profit:9.27</span></b>
+<b><span style='color: red'>[TRADE] 2026-01-25 WMT BUY 130.28 profit:5.56</span></b>
+<b><span style='color: green'>[TRADE] 2026-01-26 WMT SELL 135.84 profit:5.56</span></b>
+<b><span style='color: red'>[TRADE] 2026-01-30 WMT BUY 126.85 profit:3.32</span></b>
+<b><span style='color: green'>[TRADE] 2026-02-01 WMT SELL 130.17 profit:3.32</span></b>
+
+<b>[SUMMARY] Total_profit: 18.14</b>

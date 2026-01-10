@@ -1139,7 +1139,7 @@ async def process_message(message: types.Message):
                     else:
                         strategy_text += "⚠️ **УБЫТОЧНАЯ** - Рекомендуется избегать торговли"
                     
-                    await message.answer(strategy_text, reply_markup=get_main_menu(), parse_mode="Markdown")
+                    await message.answer(strategy_text, reply_markup=get_main_menu(), parse_mode="HTML")
                 else:
                     await message.answer("❌ Данные теста не найдены", reply_markup=get_main_menu())
         except Exception as e:
@@ -1524,12 +1524,15 @@ async def process_message(message: types.Message):
             )
             
             current_price = df['Close'].iloc[-1]
-            recommendations, expected_profit, profit_percent, trades = calculate_trading_strategy(
+            recommendations, expected_profit, trades = calculate_trading_strategy(
                 best_model['predictions'],
                 forecast_dates,
                 amount,
                 current_price
             )
+            
+            # Рассчитываем процент прибыли
+            profit_percent = (expected_profit / amount) * 100 if amount > 0 else 0
             
             # Сохраняем рекомендации
             rec_file, csv_file = save_recommendations_to_file(
@@ -1537,29 +1540,7 @@ async def process_message(message: types.Message):
                 amount, ticker, task_folder
             )
             
-            # Сначала отправляем информацию о прибыльности
-            profit_summary = f"💰 **ФИНАНСОВЫЕ РЕЗУЛЬТАТЫ СТРАТЕГИИ**\n\n"
-            profit_summary += f"💵 Начальные инвестиции: ${amount:.2f}\n"
-            profit_summary += f"📈 Ожидаемая прибыль: ${expected_profit:.2f}\n"
-            profit_summary += f"📊 Доходность: {profit_percent:+.2f}%\n"
-            
-            if expected_profit > 0:
-                profit_summary += f"💎 Итоговый капитал: ${amount + expected_profit:.2f}\n\n"
-                if profit_percent > 10:
-                    profit_summary += "🚀 **ВЫСОКОДОХОДНАЯ СТРАТЕГИЯ!** Отличный потенциал роста!"
-                elif profit_percent > 5:
-                    profit_summary += "✅ **ПРИБЫЛЬНАЯ СТРАТЕГИЯ** Хорошие возможности заработка"
-                elif profit_percent > 2:
-                    profit_summary += "📈 **УМЕРЕННАЯ ПРИБЫЛЬ** Стабильный рост капитала"
-                else:
-                    profit_summary += "💡 **НЕБОЛЬШАЯ ПРИБЫЛЬ** Минимальные риски"
-            else:
-                profit_summary += f"⚠️ Итоговый капитал: ${amount + expected_profit:.2f}\n\n"
-                profit_summary += "⚠️ **УБЫТОЧНАЯ СТРАТЕГИЯ** Рекомендуется избегать торговли"
-            
-            await message.answer(profit_summary)
-            
-            # Отправляем полные рекомендации
+            # Отправляем рекомендации в новом цветном формате логирования
             rec_text = generate_recommendations_text(
                 recommendations, expected_profit, profit_percent,
                 amount, ticker
@@ -1567,11 +1548,26 @@ async def process_message(message: types.Message):
             
             # Разбиваем на части если текст слишком длинный
             if len(rec_text) > 4000:
-                parts = [rec_text[i:i+4000] for i in range(0, len(rec_text), 4000)]
+                # Разбиваем по строкам чтобы не разрывать HTML теги
+                lines = rec_text.split('\n')
+                parts = []
+                current_part = ""
+                
+                for line in lines:
+                    if len(current_part) + len(line) + 1 > 4000:
+                        if current_part:
+                            parts.append(current_part.strip())
+                        current_part = line
+                    else:
+                        current_part += "\n" + line if current_part else line
+                
+                if current_part:
+                    parts.append(current_part.strip())
+                
                 for part in parts:
-                    await message.answer(part)
+                    await message.answer(part, parse_mode="HTML")
             else:
-                await message.answer(rec_text)
+                await message.answer(rec_text, parse_mode="HTML")
             
             # Сохраняем прогноз для возможного испытания реальностью
             state["temp_forecast"] = {
@@ -1604,9 +1600,9 @@ async def process_message(message: types.Message):
             # Разные сообщения для разных типов ошибок
             if "download" in error_msg.lower() or "yahoo" in error_msg.lower():
                 user_msg = (
-                    f"❌ **Ошибка загрузки данных**\n\n"
+                    f"❌ <b>Ошибка загрузки данных</b>\n\n"
                     f"Проблема с получением данных для {ticker}\n\n"
-                    f"🔧 **Попробуйте:**\n"
+                    f"🔧 <b>Попробуйте:</b>\n"
                     f"• Выбрать другой тикер\n"
                     f"• Повторить через несколько минут\n"
                     f"• Использовать команду /debug для диагностики\n\n"
@@ -1614,24 +1610,24 @@ async def process_message(message: types.Message):
                 )
             elif "model" in error_msg.lower():
                 user_msg = (
-                    f"❌ **Ошибка в модели прогнозирования**\n\n"
+                    f"❌ <b>Ошибка в модели прогнозирования</b>\n\n"
                     f"Проблема при обучении моделей для {ticker}\n\n"
-                    f"💡 **Рекомендации:**\n"
+                    f"💡 <b>Рекомендации:</b>\n"
                     f"• Попробуйте другой тикер\n"
                     f"• Уменьшите горизонт прогноза\n"
                     f"• Повторите попытку позже"
                 )
             else:
                 user_msg = (
-                    f"❌ **Произошла ошибка**\n\n"
+                    f"❌ <b>Произошла ошибка</b>\n\n"
                     f"Не удалось выполнить анализ для {ticker}\n\n"
-                    f"🔄 **Действия:**\n"
+                    f"🔄 <b>Действия:</b>\n"
                     f"• Попробуйте другой тикер или сумму\n"
                     f"• Используйте /debug для проверки системы\n"
                     f"• Перезапустите бота командой /start"
                 )
             
-            await message.answer(user_msg)
+            await message.answer(user_msg, parse_mode="HTML")
         return
 
     # Обработка кнопки "Нет, спасибо" вне контекста
