@@ -533,3 +533,41 @@
 2026-01-10 20:26:06,602 — INFO — Connection established (tryings = 1, bot id = 8553314612)
 2026-01-10 20:27:16,256 — INFO — [USER 8367830040] ❌ Нет, спасибо
 2026-01-10 20:27:16,912 — INFO — Update id=444782790 is handled. Duration 656 ms by bot id=8553314612
+2026-01-10 20:39:00,833 — INFO — [BOT] Bot started
+2026-01-10 20:39:00,834 — INFO — Start polling
+2026-01-10 20:39:01,570 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-10 20:39:22,189 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-10 20:39:22,885 — INFO — Update id=444782791 is handled. Duration 688 ms by bot id=8553314612
+2026-01-10 20:39:24,615 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-10 20:39:24,931 — INFO — Update id=444782792 is handled. Duration 313 ms by bot id=8553314612
+2026-01-10 20:39:26,210 — INFO — [USER 8367830040] 🎬 NFLX
+2026-01-10 20:39:26,564 — INFO — Update id=444782793 is handled. Duration 358 ms by bot id=8553314612
+2026-01-10 20:39:27,271 — INFO — [USER 8367830040] 💵 Сумма
+2026-01-10 20:39:27,563 — INFO — Update id=444782794 is handled. Duration 295 ms by bot id=8553314612
+2026-01-10 20:39:28,816 — INFO — [USER 8367830040] 💵 1000
+2026-01-10 20:39:29,124 — INFO — Update id=444782795 is handled. Duration 313 ms by bot id=8553314612
+2026-01-10 20:39:30,366 — INFO — [USER 8367830040] 📅 Горизонт прогноза
+2026-01-10 20:39:30,366 — INFO — [BOT] Opening forecast menu
+2026-01-10 20:39:30,666 — INFO — Update id=444782796 is handled. Duration 297 ms by bot id=8553314612
+2026-01-10 20:39:32,092 — INFO — [USER 8367830040] 📅 25 дней
+2026-01-10 20:39:32,361 — INFO — Update id=444782797 is handled. Duration 265 ms by bot id=8553314612
+2026-01-10 20:39:33,409 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-10 20:39:33,774 — INFO — [BOT] Starting analysis for NFLX, amount=1000, forecast=25
+2026-01-10 20:39:36,518 — INFO — [BOT] Created task folder: Tasks/NFLX-1000-2026-01-10-2026-01-09
+2026-01-10 20:39:36,526 — INFO — [BOT] Saved data to Tasks/NFLX-1000-2026-01-10-2026-01-09\NFLX_data.csv
+2026-01-10 20:39:40,930 — INFO — Chain [1] start processing
+2026-01-10 20:39:41,370 — INFO — Chain [1] done processing
+2026-01-10 20:39:41,536 — INFO — Chain [1] start processing
+2026-01-10 20:39:41,688 — INFO — Chain [1] done processing
+2026-01-10 20:45:51,590 — WARNING — From C:\Users\Eve\AppData\Roaming\Python\Python312\site-packages\keras\src\backend\tensorflow\core.py:219: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2026-01-10 20:46:11,047 — INFO — [BOT] Generated historical graph for NFLX
+2026-01-10 20:46:11,447 — INFO — [BOT] Generated full forecast graph for NFLX
+2026-01-10 20:46:11,845 — INFO — [BOT] Generated zoomed forecast graph for NFLX
+2026-01-10 20:46:11,847 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-10 20:46:11,847 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-10 20:46:18,717 — INFO — [BOT] Saved temporary forecast for reality testing: NFLX
+2026-01-10 20:46:19,025 — INFO — Update id=444782798 is handled. Duration 405609 ms by bot id=8553314612
+2026-01-10 20:46:23,416 — INFO — Connection established (tryings = 1, bot id = 8553314612)
+2026-01-10 20:54:56,802 — INFO — [USER 8367830040] ❌ Нет, спасибо
+2026-01-10 20:54:57,471 — INFO — Update id=444782799 is handled. Duration 671 ms by bot id=8553314612
