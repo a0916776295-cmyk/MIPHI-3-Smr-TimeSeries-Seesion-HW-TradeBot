@@ -1,0 +1,2 @@
+# Укажите сюда токен Telegram-бота
+BOT_TOKEN = "8553314612:AAFDCVhlq9jSlILTW3TAxHeGzVW89g6L0mA"

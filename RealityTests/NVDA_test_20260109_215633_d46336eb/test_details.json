@@ -1,0 +1,45 @@
+{
+  "test_id": "d46336eb",
+  "user_id": 8367830040,
+  "username": "pnFmvo",
+  "ticker": "NVDA",
+  "target_date": "2026-01-11",
+  "predictions": [
+    184.14142605885704,
+    174.13349627383067,
+    166.5001365773152,
+    157.356664037325,
+    145.9723417328315
+  ],
+  "forecast_dates": [
+    "2026-01-09",
+    "2026-01-10",
+    "2026-01-11",
+    "2026-01-12",
+    "2026-01-13"
+  ],
+  "amount": 100,
+  "model_name": "Stacked Ensemble",
+  "trading_recommendations": [
+    {
+      "date": "09.01.2026",
+      "day": 0,
+      "action": "📉 КОРОТКАЯ ПРОДАЖА",
+      "price": "$185.15",
+      "reason": "Прогнозируется падение до $145.97 (-21.2%)"
+    },
+    {
+      "date": "14.01.2026",
+      "day": 5,
+      "action": "📈 ПОКРЫТЬ КОРОТКУЮ",
+      "price": "$145.97",
+      "reason": "Прибыль от короткой продажи: $21.16"
+    }
+  ],
+  "expected_profit": 21.159953256901943,
+  "profit_percent": 21.159953256901943,
+  "created_at": "2026-01-09 21:56:33",
+  "status": "pending",
+  "folder": "RealityTests/NVDA_test_20260109_215633_d46336eb",
+  "forecast_days": 5
+}

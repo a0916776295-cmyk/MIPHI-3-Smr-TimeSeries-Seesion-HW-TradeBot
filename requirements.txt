@@ -1,0 +1,11 @@
+aiogram==3.13.1
+yfinance
+matplotlib
+pandas
+numpy
+tensorflow
+scikit-learn
+statsmodels
+prophet
+xgboost
+catboost
