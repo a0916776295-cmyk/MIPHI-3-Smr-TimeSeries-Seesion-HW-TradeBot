@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 
 # Импорты из проекта
-from reality_test import (
+from .reality_test import (
     add_reality_test, 
     get_user_reality_test, 
     check_ready_tests, 

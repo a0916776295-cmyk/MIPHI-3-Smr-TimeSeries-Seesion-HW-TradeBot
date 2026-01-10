@@ -42,7 +42,7 @@ def test_analysis_components():
         # Тест 3: Импорт model_comparison (может быть медленным)
         safe_print("\n3️⃣ Тестирование импорта model_comparison (может занять время)...")
         try:
-            from model_comparison import compare_all_models
+            from Models.model_comparison import compare_all_models
             safe_print("✅ model_comparison импортирован")
         except Exception as e:
             safe_print(f"❌ Ошибка импорта model_comparison: {str(e)}")

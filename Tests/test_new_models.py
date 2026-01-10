@@ -16,26 +16,26 @@ def test_new_models():
     
     # Тестируем импорт новых моделей
     try:
-        from Model_Transformer import train_transformer_model
+        from Models.Model_Transformer import train_transformer_model
         print("✅ Transformer модель доступна")
     except ImportError as e:
         print(f"❌ Transformer модель: {e}")
     
     try:
-        from Model_Informer import train_informer_model
+        from Models.Model_Informer import train_informer_model
         print("✅ Informer модель доступна")
     except ImportError as e:
         print(f"❌ Informer модель: {e}")
     
     try:
-        from Model_Ensemble import create_ensemble_predictions, EnsemblePredictor
+        from Models.Model_Ensemble import create_ensemble_predictions, EnsemblePredictor
         print("✅ Ensemble методы доступны")
     except ImportError as e:
         print(f"❌ Ensemble методы: {e}")
     
     # Тестируем обновленный model_comparison
     try:
-        from model_comparison import compare_all_models
+        from Models.model_comparison import compare_all_models
         print("✅ Обновленный model_comparison доступен")
     except ImportError as e:
         print(f"❌ model_comparison: {e}")
@@ -66,7 +66,7 @@ def test_new_models():
         # Тестируем Transformer модель
         print("\n🤖 Тестирование Transformer модели...")
         try:
-            from Model_Transformer import train_transformer_model
+            from Models.Model_Transformer import train_transformer_model
             result = train_transformer_model(test_data, prediction_steps=5, epochs=5, batch_size=8)
             print(f"✅ Transformer: RMSE={result['rmse']:.2f}, MAPE={result['mape']:.2f}%")
             print(f"📈 Прогноз: {result['predictions'][:3]}... (показано 3 из {len(result['predictions'])})")
@@ -98,7 +98,7 @@ def test_new_models():
                 }
             ]
             
-            from Model_Ensemble import create_ensemble_predictions
+            from Models.Model_Ensemble import create_ensemble_predictions
             ensemble_results = create_ensemble_predictions(mock_results)
             
             if ensemble_results:

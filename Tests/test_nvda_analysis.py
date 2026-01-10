@@ -53,7 +53,7 @@ def test_nvda_analysis():
         # Тест 4: Проверка модели
         print("4️⃣ Тестируем базовую модель...")
         try:
-            import Model_Prophet
+            import Models.Model_Prophet as Model_Prophet
             model = Model_Prophet.predict_prophet(df.copy(), forecast_days)
             print(f"✅ Модель Prophet работает")
             print(f"   📈 Прогноз: {model[:3]}... (первые 3 значения)")

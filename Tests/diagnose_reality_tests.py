@@ -33,7 +33,7 @@ def check_system_status():
     # 2. Проверка модулей
     print("\n🔧 ПРОВЕРКА ИМПОРТОВ:")
     try:
-        from reality_test import add_reality_test, get_user_reality_test
+        from .reality_test import add_reality_test, get_user_reality_test
         print("✅ reality_test модуль - импортирован")
         
         from datetime import datetime, timedelta
@@ -100,7 +100,7 @@ def check_system_status():
                 print("❌ Проблема с сохранением теста")
             
             # Удаляем тестовый тест
-            from reality_test import reality_tests, save_reality_tests
+            from .reality_test import reality_tests, save_reality_tests
             if test_user_id in reality_tests:
                 del reality_tests[test_user_id]
                 save_reality_tests()

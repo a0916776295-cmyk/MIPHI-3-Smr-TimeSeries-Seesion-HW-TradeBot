@@ -5,22 +5,22 @@ import os
 from datetime import datetime
 
 # Импорт всех моделей
-from Model_ARIMA import train_and_predict_arima
-from Model_SARIMA import train_and_predict_sarima
-from Model_Prophet import train_and_predict_prophet
-from Model_LSTM import train_and_predict_lstm
-from Model_LSTM_optimized import train_and_predict_lstm as train_and_predict_lstm_opt
-from Model_GRU import train_and_predict_gru
-from Model_GRU_optimized import train_and_predict_gru as train_and_predict_gru_opt
-from Model_TFT import train_and_predict_tft
-from Model_Autoformer import train_and_predict_autoformer
-from Model_FEDformer import train_and_predict_fedformer
-from Model_Ridge import train_and_predict_ridge
-from Model_RandomForest import train_and_predict_randomforest
+from .Model_ARIMA import train_and_predict_arima
+from .Model_SARIMA import train_and_predict_sarima
+from .Model_Prophet import train_and_predict_prophet
+from .Model_LSTM import train_and_predict_lstm
+from .Model_LSTM_optimized import train_and_predict_lstm as train_and_predict_lstm_opt
+from .Model_GRU import train_and_predict_gru
+from .Model_GRU_optimized import train_and_predict_gru as train_and_predict_gru_opt
+from .Model_TFT import train_and_predict_tft
+from .Model_Autoformer import train_and_predict_autoformer
+from .Model_FEDformer import train_and_predict_fedformer
+from .Model_Ridge import train_and_predict_ridge
+from .Model_RandomForest import train_and_predict_randomforest
 
 # Новые Transformer-based модели
 try:
-    from Model_Transformer import train_transformer_model
+    from .Model_Transformer import train_transformer_model
     TRANSFORMER_AVAILABLE = True
     print("✅ Transformer модель успешно импортирована")
 except ImportError as e:
@@ -28,7 +28,7 @@ except ImportError as e:
     print(f"❌ Transformer модель не доступна: {e}")
 
 try:
-    from Model_Informer import train_informer_model
+    from .Model_Informer import train_informer_model
     INFORMER_AVAILABLE = True
     print("✅ Informer модель успешно импортирована")
 except ImportError as e:
@@ -37,7 +37,7 @@ except ImportError as e:
 
 # Ensemble методы
 try:
-    from Model_Ensemble import create_ensemble_predictions
+    from .Model_Ensemble import create_ensemble_predictions
     ENSEMBLE_AVAILABLE = True
     print("✅ Ensemble методы успешно импортированы")
 except ImportError as e:
@@ -45,7 +45,7 @@ except ImportError as e:
     print(f"❌ Ensemble методы не доступны: {e}")
 
 try:
-    from Model_XGBoost import train_and_predict_xgboost
+    from .Model_XGBoost import train_and_predict_xgboost
     XGBOOST_AVAILABLE = True
     print("✅ XGBoost успешно импортирован")
 except ImportError as e:
@@ -53,7 +53,7 @@ except ImportError as e:
     print(f"❌ XGBoost не установлен: {e}")
 
 try:
-    from Model_CatBoost import train_and_predict_catboost
+    from .Model_CatBoost import train_and_predict_catboost
     CATBOOST_AVAILABLE = True
     print("✅ CatBoost успешно импортирован")
 except ImportError as e:

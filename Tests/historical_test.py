@@ -7,7 +7,7 @@ async def historical_test():
     print("=== ТЕСТ С ИСТОРИЧЕСКОЙ ДАТОЙ ===")
 
     try:
-        from reality_test import (
+        from .reality_test import (
             add_reality_test, get_user_reality_test, 
             check_ready_tests, execute_reality_test,
             reality_tests, save_reality_tests

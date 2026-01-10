@@ -4,7 +4,7 @@ sys.path.append('.')
 print("=== ТЕСТ МЕХАНИЗМА РЕАЛЬНОСТИ ===")
 
 try:
-    from reality_test import add_reality_test, get_user_reality_test
+    from .reality_test import add_reality_test, get_user_reality_test
     print("✅ Модуль reality_test импортирован")
     
     from datetime import datetime, timedelta

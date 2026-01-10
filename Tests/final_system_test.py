@@ -31,7 +31,7 @@ def final_system_test():
         safe_print("\n1️⃣ Тестирование импортов...")
         from finance import get_finance_data
         from MenuBot import POPULAR_TICKERS, get_main_menu
-        from reality_test import add_reality_test, check_ready_tests
+        from .reality_test import add_reality_test, check_ready_tests
         safe_print("✅ Все модули импортированы успешно")
         
         # 2. Тестируем загрузку данных для нескольких популярных тикеров

@@ -28,17 +28,16 @@ from MenuBot import (
     get_help_text, get_about_text, get_status_message, POPULAR_TICKERS,
     get_reality_test_menu, get_test_date_menu, get_reality_test_help_text
 )
-from reality_test import (
+from Tests.reality_test import (
     add_reality_test, get_user_reality_test, remove_reality_test,
     check_ready_tests, execute_reality_test, format_test_status,
     get_reality_tests_statistics, get_user_all_tests, format_test_summary,
     get_test_details, delete_user_test, delete_all_user_tests
 )
-from model_comparison import compare_all_models
+from Models.model_comparison import compare_all_models
 from trading_recommendations import (
     calculate_trading_strategy, 
     generate_recommendations_text,
-    generate_brief_recommendations_text,
     save_recommendations_to_file
 )
 bot = Bot(token=BOT_TOKEN)
@@ -754,7 +753,7 @@ async def process_message(message: types.Message):
                 freq='D'
             ).strftime('%Y-%m-%d').tolist()
             
-            from reality_test import add_reality_test
+            from Tests.reality_test import add_reality_test
             success = add_reality_test(
                 user_id,
                 "AAPL", 
@@ -769,7 +768,7 @@ async def process_message(message: types.Message):
                 await message.answer(f"✅ Шаг 3: Тест реальности создан на {tomorrow}")
                 
                 # 4. Проверяем, что тест сохранился
-                from reality_test import get_user_reality_test
+                from Tests.reality_test import get_user_reality_test
                 saved_test = get_user_reality_test(user_id)
                 if saved_test:
                     await message.answer("✅ Шаг 4: Тест найден в базе данных")
@@ -787,12 +786,12 @@ async def process_message(message: types.Message):
                     await message.answer("⏳ Шаг 5: Симулируем выполнение теста...")
                     
                     # Меняем дату теста на сегодня для немедленного выполнения
-                    from reality_test import reality_tests
+                    from Tests.reality_test import reality_tests
                     if user_id in reality_tests:
                         reality_tests[user_id]["target_date"] = datetime.now().strftime("%Y-%m-%d")
                         
                         # Проверяем готовые тесты
-                        from reality_test import check_ready_tests, execute_reality_test
+                        from Tests.reality_test import check_ready_tests, execute_reality_test
                         ready_tests = check_ready_tests()
                         
                         user_ready = [(uid, test) for uid, test in ready_tests if uid == user_id]
@@ -1560,11 +1559,7 @@ async def process_message(message: types.Message):
             
             await message.answer(profit_summary)
             
-            # Отправляем рекомендации - сначала краткий формат
-            brief_text = generate_brief_recommendations_text(recommendations, ticker)
-            await message.answer(brief_text)
-            
-            # Затем полный формат
+            # Отправляем полные рекомендации
             rec_text = generate_recommendations_text(
                 recommendations, expected_profit, profit_percent,
                 amount, ticker

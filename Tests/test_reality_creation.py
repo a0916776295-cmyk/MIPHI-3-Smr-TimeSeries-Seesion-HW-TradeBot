@@ -5,7 +5,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-import reality_test
+from . import reality_test
 import numpy as np
 from datetime import datetime, timedelta
 

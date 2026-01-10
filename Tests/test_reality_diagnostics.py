@@ -54,7 +54,7 @@ def check_reality_tests_storage():
     print(f"\n🔧 Проверка модуля reality_test:")
     
     try:
-        from reality_test import reality_tests, get_all_user_tests, load_reality_tests
+        from .reality_test import reality_tests, get_all_user_tests, load_reality_tests
         print("✅ Модуль успешно импортирован")
         
         # Принудительно загружаем

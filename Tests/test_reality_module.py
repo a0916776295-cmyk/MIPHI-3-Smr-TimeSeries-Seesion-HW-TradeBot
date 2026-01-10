@@ -26,7 +26,7 @@ def test_reality_test_module():
     safe_print("🧪 Тестирование модуля reality_test...")
     
     try:
-        import reality_test
+        from . import reality_test
         safe_print("✅ Модуль reality_test успешно импортирован")
         
         # Тестируем основные функции
