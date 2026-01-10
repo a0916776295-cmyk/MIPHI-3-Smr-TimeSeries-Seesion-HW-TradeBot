@@ -1,0 +1,8 @@
+<b>ТОРГОВЫЕ РЕКОМЕНДАЦИИ ДЛЯ INTC</b>
+
+<b><span style='color: red'>[TRADE] 2026-01-11 INTC BUY 44.92 profit:2.03</span></b>
+<b><span style='color: green'>[TRADE] 2026-01-12 INTC SELL 45.43 profit:2.03</span></b>
+<b><span style='color: red'>[TRADE] 2026-01-18 INTC BUY 37.82 profit:12.67</span></b>
+<b><span style='color: green'>[TRADE] 2026-01-21 INTC SELL 40.36 profit:12.67</span></b>
+
+<b>[SUMMARY] Total_profit: 14.70</b>

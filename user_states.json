@@ -1,18 +1,11 @@
 {
   "8367830040": {
-    "ticker": null,
-    "amount": null,
-    "forecast_days": 30,
-    "mode": "normal",
-    "temp_forecast": null
-  },
-  "8367830040": {
-    "ticker": "MCD",
+    "ticker": "NFLX",
     "amount": 1000,
-    "forecast_days": 30,
+    "forecast_days": 25,
     "mode": "offering_reality_test",
     "temp_forecast": {
-      "ticker": "MCD",
+      "ticker": "NFLX",
       "amount": 1000,
       "model_name": "Stacked Ensemble",
       "predictions": 

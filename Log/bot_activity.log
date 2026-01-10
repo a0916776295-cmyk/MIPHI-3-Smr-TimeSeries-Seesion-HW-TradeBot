@@ -355,3 +355,181 @@
 2026-01-10 19:09:50,912 — INFO — Connection established (tryings = 1, bot id = 8553314612)
 2026-01-10 19:14:53,559 — INFO — [USER 8367830040] 🔄 Перезапуск
 2026-01-10 19:14:54,182 — INFO — Update id=444782751 is handled. Duration 625 ms by bot id=8553314612
+2026-01-10 19:16:19,992 — INFO — [BOT] Bot started
+2026-01-10 19:16:19,994 — INFO — Start polling
+2026-01-10 19:16:20,671 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-10 19:16:28,202 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-10 19:16:28,890 — INFO — Update id=444782752 is handled. Duration 688 ms by bot id=8553314612
+2026-01-10 19:16:30,502 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-10 19:16:30,778 — INFO — Update id=444782753 is handled. Duration 266 ms by bot id=8553314612
+2026-01-10 19:16:31,755 — INFO — [USER 8367830040] 🍎 AAPL
+2026-01-10 19:16:32,056 — INFO — Update id=444782754 is handled. Duration 297 ms by bot id=8553314612
+2026-01-10 19:16:32,911 — INFO — [USER 8367830040] 💵 Сумма
+2026-01-10 19:16:33,258 — INFO — Update id=444782755 is handled. Duration 343 ms by bot id=8553314612
+2026-01-10 19:16:34,040 — INFO — [USER 8367830040] 💵 200
+2026-01-10 19:16:34,498 — INFO — Update id=444782756 is handled. Duration 468 ms by bot id=8553314612
+2026-01-10 19:16:36,043 — INFO — [USER 8367830040] 📅 Горизонт прогноза
+2026-01-10 19:16:36,043 — INFO — [BOT] Opening forecast menu
+2026-01-10 19:16:36,404 — INFO — Update id=444782757 is handled. Duration 375 ms by bot id=8553314612
+2026-01-10 19:16:38,708 — INFO — [USER 8367830040] 📅 5 дней
+2026-01-10 19:16:39,019 — INFO — Update id=444782758 is handled. Duration 313 ms by bot id=8553314612
+2026-01-10 19:16:39,817 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-10 19:16:40,240 — INFO — [BOT] Starting analysis for AAPL, amount=200, forecast=5
+2026-01-10 19:16:43,060 — INFO — [BOT] Created task folder: Tasks/AAPL-200-2026-01-10-2026-01-09
+2026-01-10 19:16:43,068 — INFO — [BOT] Saved data to Tasks/AAPL-200-2026-01-10-2026-01-09\AAPL_data.csv
+2026-01-10 19:16:47,383 — INFO — Chain [1] start processing
+2026-01-10 19:16:47,626 — INFO — Chain [1] done processing
+2026-01-10 19:16:47,791 — INFO — Chain [1] start processing
+2026-01-10 19:16:47,921 — INFO — Chain [1] done processing
+2026-01-10 19:21:06,822 — WARNING — 5 out of the last 16 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x000002C959FADDA0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2026-01-10 19:22:49,097 — WARNING — 5 out of the last 16 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x000002C97564CE00> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2026-01-10 19:23:33,877 — WARNING — From C:\Users\Eve\AppData\Roaming\Python\Python312\site-packages\keras\src\backend\tensorflow\core.py:219: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2026-01-10 19:24:00,191 — INFO — [BOT] Generated historical graph for AAPL
+2026-01-10 19:24:00,565 — INFO — [BOT] Generated full forecast graph for AAPL
+2026-01-10 19:24:00,915 — INFO — [BOT] Generated zoomed forecast graph for AAPL
+2026-01-10 19:24:00,917 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-10 19:24:00,917 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-10 19:24:08,306 — INFO — [BOT] Saved temporary forecast for reality testing: AAPL
+2026-01-10 19:24:08,567 — INFO — Update id=444782759 is handled. Duration 448750 ms by bot id=8553314612
+2026-01-10 19:24:12,340 — INFO — Connection established (tryings = 1, bot id = 8553314612)
+2026-01-10 19:25:07,619 — INFO — [USER 8367830040] ❌ Нет, спасибо
+2026-01-10 19:25:08,065 — INFO — Update id=444782760 is handled. Duration 452 ms by bot id=8553314612
+2026-01-10 19:33:03,590 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-10 19:33:04,074 — INFO — [BOT] Starting analysis for AAPL, amount=200, forecast=5
+2026-01-10 19:33:05,585 — INFO — [BOT] Created task folder: Tasks/AAPL-200-2026-01-10-2026-01-09
+2026-01-10 19:33:05,588 — INFO — [BOT] Saved data to Tasks/AAPL-200-2026-01-10-2026-01-09\AAPL_data.csv
+2026-01-10 19:33:09,596 — INFO — Chain [1] start processing
+2026-01-10 19:33:09,970 — INFO — Chain [1] done processing
+2026-01-10 19:33:10,145 — INFO — Chain [1] start processing
+2026-01-10 19:33:10,298 — INFO — Chain [1] done processing
+2026-01-10 19:39:31,014 — INFO — [BOT] Generated historical graph for AAPL
+2026-01-10 19:39:31,378 — INFO — [BOT] Generated full forecast graph for AAPL
+2026-01-10 19:39:31,744 — INFO — [BOT] Generated zoomed forecast graph for AAPL
+2026-01-10 19:39:31,746 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-10 19:39:31,746 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-10 19:39:38,728 — INFO — [BOT] Saved temporary forecast for reality testing: AAPL
+2026-01-10 19:39:38,936 — INFO — Update id=444782761 is handled. Duration 395358 ms by bot id=8553314612
+2026-01-10 19:39:43,298 — INFO — Connection established (tryings = 1, bot id = 8553314612)
+2026-01-10 19:47:59,557 — INFO — [BOT] Bot started
+2026-01-10 19:47:59,559 — INFO — Start polling
+2026-01-10 19:48:00,291 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-10 19:54:17,725 — INFO — [USER 8367830040] Command /start
+2026-01-10 19:54:17,725 — INFO — [BOT] Sent greeting to user
+2026-01-10 19:54:18,394 — INFO — Update id=444782762 is handled. Duration 672 ms by bot id=8553314612
+2026-01-10 19:54:20,050 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-10 19:54:20,366 — INFO — Update id=444782763 is handled. Duration 311 ms by bot id=8553314612
+2026-01-10 19:54:23,657 — INFO — [USER 8367830040] 💻 INTC
+2026-01-10 19:54:23,967 — INFO — Update id=444782764 is handled. Duration 312 ms by bot id=8553314612
+2026-01-10 19:54:26,618 — INFO — [USER 8367830040] 💵 Сумма
+2026-01-10 19:54:26,924 — INFO — Update id=444782765 is handled. Duration 313 ms by bot id=8553314612
+2026-01-10 19:54:28,806 — INFO — [USER 8367830040] 💵 200
+2026-01-10 19:54:29,100 — INFO — Update id=444782766 is handled. Duration 296 ms by bot id=8553314612
+2026-01-10 19:54:31,779 — INFO — [USER 8367830040] 📅 Горизонт прогноза
+2026-01-10 19:54:31,779 — INFO — [BOT] Opening forecast menu
+2026-01-10 19:54:32,086 — INFO — Update id=444782767 is handled. Duration 296 ms by bot id=8553314612
+2026-01-10 19:54:34,736 — INFO — [USER 8367830040] 📅 20 дней
+2026-01-10 19:54:35,066 — INFO — Update id=444782768 is handled. Duration 327 ms by bot id=8553314612
+2026-01-10 19:54:38,773 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-10 19:54:39,082 — INFO — [BOT] Starting analysis for INTC, amount=200, forecast=20
+2026-01-10 19:54:41,951 — INFO — [BOT] Created task folder: Tasks/INTC-200-2026-01-10-2026-01-09
+2026-01-10 19:54:41,958 — INFO — [BOT] Saved data to Tasks/INTC-200-2026-01-10-2026-01-09\INTC_data.csv
+2026-01-10 19:54:45,667 — INFO — Chain [1] start processing
+2026-01-10 19:54:46,080 — INFO — Chain [1] done processing
+2026-01-10 19:54:46,260 — INFO — Chain [1] start processing
+2026-01-10 19:54:46,372 — INFO — Chain [1] done processing
+2026-01-10 20:00:27,867 — WARNING — From C:\Users\Eve\AppData\Roaming\Python\Python312\site-packages\keras\src\backend\tensorflow\core.py:219: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2026-01-10 20:00:45,690 — INFO — [BOT] Generated historical graph for INTC
+2026-01-10 20:00:46,073 — INFO — [BOT] Generated full forecast graph for INTC
+2026-01-10 20:00:46,454 — INFO — [BOT] Generated zoomed forecast graph for INTC
+2026-01-10 20:00:46,457 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-10 20:00:46,458 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-10 20:00:52,589 — INFO — [BOT] Error in analysis: Telegram server says - Bad Request: can't parse entities: Tag "span" must have class "tg-spoiler" at byte offset 65
+2026-01-10 20:00:52,807 — INFO — Update id=444782769 is handled. Duration 374031 ms by bot id=8553314612
+2026-01-10 20:00:57,879 — INFO — Connection established (tryings = 1, bot id = 8553314612)
+2026-01-10 20:07:11,249 — INFO — [BOT] Bot started
+2026-01-10 20:07:11,278 — INFO — Start polling
+2026-01-10 20:07:11,711 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-10 20:07:11,799 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-10 20:07:11,803 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-10 20:07:12,203 — INFO — Update id=444782771 is handled. Duration 405 ms by bot id=8553314612
+2026-01-10 20:07:12,225 — INFO — Update id=444782770 is handled. Duration 421 ms by bot id=8553314612
+2026-01-10 20:08:04,390 — INFO — [BOT] Bot started
+2026-01-10 20:08:04,391 — INFO — Start polling
+2026-01-10 20:08:04,680 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-10 20:08:16,369 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-10 20:08:16,801 — INFO — Update id=444782772 is handled. Duration 438 ms by bot id=8553314612
+2026-01-10 20:08:18,287 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-10 20:08:18,521 — INFO — Update id=444782773 is handled. Duration 234 ms by bot id=8553314612
+2026-01-10 20:08:20,417 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-10 20:08:20,638 — INFO — Update id=444782774 is handled. Duration 234 ms by bot id=8553314612
+2026-01-10 20:08:23,182 — INFO — [USER 8367830040] 🎮 NVDA
+2026-01-10 20:08:23,391 — INFO — Update id=444782775 is handled. Duration 218 ms by bot id=8553314612
+2026-01-10 20:08:24,287 — INFO — [USER 8367830040] 💵 Сумма
+2026-01-10 20:08:24,526 — INFO — Update id=444782776 is handled. Duration 234 ms by bot id=8553314612
+2026-01-10 20:08:25,672 — INFO — [USER 8367830040] 💵 500
+2026-01-10 20:08:25,882 — INFO — Update id=444782777 is handled. Duration 202 ms by bot id=8553314612
+2026-01-10 20:08:28,791 — INFO — [USER 8367830040] 📅 Горизонт прогноза
+2026-01-10 20:08:28,791 — INFO — [BOT] Opening forecast menu
+2026-01-10 20:08:28,998 — INFO — Update id=444782778 is handled. Duration 218 ms by bot id=8553314612
+2026-01-10 20:08:30,113 — INFO — [USER 8367830040] 📅 20 дней
+2026-01-10 20:08:30,372 — INFO — Update id=444782779 is handled. Duration 250 ms by bot id=8553314612
+2026-01-10 20:08:32,197 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-10 20:08:32,413 — INFO — [BOT] Starting analysis for NVDA, amount=500, forecast=20
+2026-01-10 20:08:36,867 — INFO — [BOT] Created task folder: Tasks/NVDA-500-2026-01-10-2026-01-09
+2026-01-10 20:08:36,911 — INFO — [BOT] Saved data to Tasks/NVDA-500-2026-01-10-2026-01-09\NVDA_data.csv
+2026-01-10 20:08:40,426 — INFO — Chain [1] start processing
+2026-01-10 20:08:41,271 — INFO — Chain [1] done processing
+2026-01-10 20:08:41,439 — INFO — Chain [1] start processing
+2026-01-10 20:08:41,572 — INFO — Chain [1] done processing
+2026-01-10 20:13:38,675 — WARNING — From C:\Users\Eve\AppData\Roaming\Python\Python312\site-packages\keras\src\backend\tensorflow\core.py:219: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2026-01-10 20:14:00,732 — INFO — [BOT] Generated historical graph for NVDA
+2026-01-10 20:14:01,149 — INFO — [BOT] Generated full forecast graph for NVDA
+2026-01-10 20:14:01,537 — INFO — [BOT] Generated zoomed forecast graph for NVDA
+2026-01-10 20:14:01,539 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-10 20:14:01,539 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-10 20:14:08,535 — INFO — [BOT] Saved temporary forecast for reality testing: NVDA
+2026-01-10 20:14:08,740 — INFO — Update id=444782780 is handled. Duration 336547 ms by bot id=8553314612
+2026-01-10 20:14:12,986 — INFO — Connection established (tryings = 1, bot id = 8553314612)
+2026-01-10 20:14:39,350 — INFO — [USER 8367830040] ❌ Нет, спасибо
+2026-01-10 20:14:40,002 — INFO — Update id=444782781 is handled. Duration 656 ms by bot id=8553314612
+2026-01-10 20:20:06,165 — INFO — [BOT] Bot started
+2026-01-10 20:20:06,166 — INFO — Start polling
+2026-01-10 20:20:06,892 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-10 20:20:09,504 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-10 20:20:10,199 — INFO — Update id=444782782 is handled. Duration 686 ms by bot id=8553314612
+2026-01-10 20:20:19,074 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-10 20:20:19,331 — INFO — Update id=444782783 is handled. Duration 266 ms by bot id=8553314612
+2026-01-10 20:20:21,169 — INFO — [USER 8367830040] 🪟 MSFT
+2026-01-10 20:20:21,480 — INFO — Update id=444782784 is handled. Duration 296 ms by bot id=8553314612
+2026-01-10 20:20:22,479 — INFO — [USER 8367830040] 💵 Сумма
+2026-01-10 20:20:22,776 — INFO — Update id=444782785 is handled. Duration 297 ms by bot id=8553314612
+2026-01-10 20:20:24,138 — INFO — [USER 8367830040] 💵 1000
+2026-01-10 20:20:24,482 — INFO — Update id=444782786 is handled. Duration 342 ms by bot id=8553314612
+2026-01-10 20:20:26,561 — INFO — [USER 8367830040] 📅 Горизонт прогноза
+2026-01-10 20:20:26,561 — INFO — [BOT] Opening forecast menu
+2026-01-10 20:20:26,819 — INFO — Update id=444782787 is handled. Duration 250 ms by bot id=8553314612
+2026-01-10 20:20:27,734 — INFO — [USER 8367830040] 📅 10 дней
+2026-01-10 20:20:28,002 — INFO — Update id=444782788 is handled. Duration 266 ms by bot id=8553314612
+2026-01-10 20:20:29,084 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-10 20:20:29,432 — INFO — [BOT] Starting analysis for MSFT, amount=1000, forecast=10
+2026-01-10 20:20:31,991 — INFO — [BOT] Created task folder: Tasks/MSFT-1000-2026-01-10-2026-01-09
+2026-01-10 20:20:31,998 — INFO — [BOT] Saved data to Tasks/MSFT-1000-2026-01-10-2026-01-09\MSFT_data.csv
+2026-01-10 20:20:35,430 — INFO — Chain [1] start processing
+2026-01-10 20:20:36,012 — INFO — Chain [1] done processing
+2026-01-10 20:20:36,163 — INFO — Chain [1] start processing
+2026-01-10 20:20:36,344 — INFO — Chain [1] done processing
+2026-01-10 20:25:33,733 — WARNING — From C:\Users\Eve\AppData\Roaming\Python\Python312\site-packages\keras\src\backend\tensorflow\core.py:219: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2026-01-10 20:25:54,217 — INFO — [BOT] Generated historical graph for MSFT
+2026-01-10 20:25:54,589 — INFO — [BOT] Generated full forecast graph for MSFT
+2026-01-10 20:25:55,039 — INFO — [BOT] Generated zoomed forecast graph for MSFT
+2026-01-10 20:25:55,041 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-10 20:25:55,042 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-10 20:26:02,303 — INFO — [BOT] Saved temporary forecast for reality testing: MSFT
+2026-01-10 20:26:02,522 — INFO — Update id=444782789 is handled. Duration 333438 ms by bot id=8553314612
+2026-01-10 20:26:06,602 — INFO — Connection established (tryings = 1, bot id = 8553314612)
+2026-01-10 20:27:16,256 — INFO — [USER 8367830040] ❌ Нет, спасибо
+2026-01-10 20:27:16,912 — INFO — Update id=444782790 is handled. Duration 656 ms by bot id=8553314612

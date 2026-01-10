@@ -1,0 +1,148 @@
+{
+  "timestamp": "2026-01-10T20:00:45.450237",
+  "forecast_days": 20,
+  "total_models": 14,
+  "ensemble_models": 6,
+  "models": [
+    {
+      "name": "Stacked Ensemble",
+      "rmse": 0.3894138601875086,
+      "mape": 0.70072571398566,
+      "is_ensemble": true
+    },
+    {
+      "name": "Ridge",
+      "rmse": 0.5192184802500115,
+      "mape": 0.9343009519808799,
+      "is_ensemble": false
+    },
+    {
+      "name": "TFT",
+      "rmse": 1.8735388843835143,
+      "mape": 3.6729086078619426,
+      "is_ensemble": false
+    },
+    {
+      "name": "Weighted Ensemble (inverse_mape)",
+      "rmse": 2.2349328247049147,
+      "mape": 5.1082741397358875,
+      "is_ensemble": true
+    },
+    {
+      "name": "Adaptive Ensemble (weighted)",
+      "rmse": 2.3663843656477135,
+      "mape": 5.45605218902226,
+      "is_ensemble": true
+    },
+    {
+      "name": "LSTM_OPT",
+      "rmse": 2.521926614537826,
+      "mape": 5.464866839124688,
+      "is_ensemble": false
+    },
+    {
+      "name": "Weighted Ensemble (inverse_error)",
+      "rmse": 2.524143323357561,
+      "mape": 5.819789001623744,
+      "is_ensemble": true
+    },
+    {
+      "name": "Weighted Ensemble (rank_based)",
+      "rmse": 3.773984230182075,
+      "mape": 8.885828933475947,
+      "is_ensemble": true
+    },
+    {
+      "name": "GRU_OPT",
+      "rmse": 4.170024225451593,
+      "mape": 9.301490136735042,
+      "is_ensemble": false
+    },
+    {
+      "name": "Prophet",
+      "rmse": 4.211304480279159,
+      "mape": 9.705779281007485,
+      "is_ensemble": false
+    },
+    {
+      "name": "RandomForest",
+      "rmse": 5.09212481112231,
+      "mape": 12.108436268394474,
+      "is_ensemble": false
+    },
+    {
+      "name": "GRU",
+      "rmse": 5.476519264159525,
+      "mape": 13.091782096228904,
+      "is_ensemble": false
+    },
+    {
+      "name": "Simple Average Ensemble",
+      "rmse": 5.849950805975737,
+      "mape": 13.999253675974353,
+      "is_ensemble": true
+    },
+    {
+      "name": "LSTM",
+      "rmse": 7.13212859484293,
+      "mape": 17.290915213969964,
+      "is_ensemble": false
+    },
+    {
+      "name": "CatBoost",
+      "rmse": 7.36842213173573,
+      "mape": 18.542620028117298,
+      "is_ensemble": false
+    },
+    {
+      "name": "Autoformer",
+      "rmse": 7.706876141862159,
+      "mape": 18.34493011671269,
+      "is_ensemble": false
+    },
+    {
+      "name": "FEDformer",
+      "rmse": 12.04936639025312,
+      "mape": 29.816088446450063,
+      "is_ensemble": false
+    },
+    {
+      "name": "Transformer",
+      "rmse": 12.115483095538345,
+      "mape": 30.900768195884453,
+      "is_ensemble": false
+    },
+    {
+      "name": "ARIMA",
+      "rmse": 12.493731601531312,
+      "mape": 29.389760380298473,
+      "is_ensemble": false
+    },
+    {
+      "name": "SARIMA",
+      "rmse": 13.621466206005763,
+      "mape": 32.01129633563475,
+      "is_ensemble": false
+    }
+  ],
+  "best_model": {
+    "name": "Stacked Ensemble",
+    "rmse": 0.3894138601875086,
+    "mape": 0.70072571398566,
+    "is_ensemble": true,
+    "ensemble_details": {
+      "type": "stacked",
+      "components": [
+        "Ridge",
+        "TFT",
+        "LSTM_OPT"
+      ]
+    }
+  },
+  "second_best_model": {
+    "name": "Ridge",
+    "rmse": 0.5192184802500115,
+    "mape": 0.9343009519808799,
+    "is_ensemble": false
+  }
+}

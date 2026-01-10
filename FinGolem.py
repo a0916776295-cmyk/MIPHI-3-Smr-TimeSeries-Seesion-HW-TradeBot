@@ -1565,9 +1565,9 @@ async def process_message(message: types.Message):
                     parts.append(current_part.strip())
                 
                 for part in parts:
-                    await message.answer(part, parse_mode="HTML")
+                    await message.answer(part)
             else:
-                await message.answer(rec_text, parse_mode="HTML")
+                await message.answer(rec_text)
             
             # Сохраняем прогноз для возможного испытания реальностью
             state["temp_forecast"] = {
@@ -1627,7 +1627,7 @@ async def process_message(message: types.Message):
                     f"• Перезапустите бота командой /start"
                 )
             
-            await message.answer(user_msg, parse_mode="HTML")
+            await message.answer(user_msg)
         return
 
     # Обработка кнопки "Нет, спасибо" вне контекста

@@ -28,7 +28,7 @@ def find_local_extrema(predictions, order=3):
     return local_min_indices, local_max_indices
 
 def calculate_trading_strategy(predictions, forecast_dates, initial_investment, 
-                               current_price, min_profit_threshold=0.005):
+                               current_price, min_profit_threshold=0.001):
     """
     Рассчитывает активную торговую стратегию с учетом локальных экстремумов
     
@@ -37,7 +37,7 @@ def calculate_trading_strategy(predictions, forecast_dates, initial_investment,
         forecast_dates: даты прогноза
         initial_investment: начальная сумма инвестиций
         current_price: текущая цена акции
-        min_profit_threshold: минимальный порог прибыли (0.5% по умолчанию)
+        min_profit_threshold: минимальный порог прибыли (0.1% по умолчанию)
     
     Returns:
         recommendations: список рекомендаций с датами
@@ -54,11 +54,26 @@ def calculate_trading_strategy(predictions, forecast_dates, initial_investment,
     print(f"📈 Общее изменение: {price_change*100:.2f}%")
     
     # Находим все локальные экстремумы с оптимальной чувствительностью
-    local_min_indices, local_max_indices = find_local_extrema(predictions, order=2)
+    # Начинаем с малой чувствительности для поиска большего количества точек
+    local_min_indices, local_max_indices = find_local_extrema(predictions, order=1)
     
-    # Если слишком мало точек, пробуем с меньшей чувствительностью
+    # Если слишком много точек, повышаем order
+    if len(local_min_indices) + len(local_max_indices) > 8:
+        local_min_indices, local_max_indices = find_local_extrema(predictions, order=2)
+        
+    # Если слишком мало точек, понижаем порог (если еще не на минимуме)
     if len(local_min_indices) + len(local_max_indices) < 2:
-        local_min_indices, local_max_indices = find_local_extrema(predictions, order=1)
+        # Пробуем найти простые минимумы и максимумы в каждом окне
+        window_size = max(3, len(predictions) // 4)
+        for i in range(window_size, len(predictions) - window_size):
+            # Проверяем локальные минимумы
+            if predictions[i] < predictions[i-1] and predictions[i] < predictions[i+1]:
+                if i not in local_min_indices:
+                    local_min_indices = np.append(local_min_indices, i)
+            # Проверяем локальные максимумы
+            if predictions[i] > predictions[i-1] and predictions[i] > predictions[i+1]:
+                if i not in local_max_indices:
+                    local_max_indices = np.append(local_max_indices, i)
     
     print(f"🔍 Найдено локальных минимумов: {len(local_min_indices)}")
     print(f"🔍 Найдено локальных максимумов: {len(local_max_indices)}")
@@ -74,9 +89,39 @@ def calculate_trading_strategy(predictions, forecast_dates, initial_investment,
         local_max_indices = np.array([global_max_idx])
         print(f"🔍 Добавлен глобальный максимум на дне {global_max_idx + 1}")
     
+    # Если все еще нет экстремумов, создаем минимальную стратегию
     if len(local_min_indices) == 0 and len(local_max_indices) == 0:
-        print("❌ Локальные экстремумы не найдены - стратегия недоступна")
-        return recommendations, 0, trades
+        print("⚠️ Локальные экстремумы не найдены - создаем простую стратегию")
+        
+        # Создаем простую стратегию: купить сразу, продать в конце
+        if price_change > 0.01:  # Если ожидаем рост более 1%
+            shares_to_buy = initial_investment / current_price  # Покупаем дробные акции
+            if shares_to_buy >= 0.1:  # Минимальное количество 0.1 акции
+                cost = shares_to_buy * current_price
+                final_value = shares_to_buy * predictions[-1]
+                profit = final_value - cost
+                
+                recommendations.append({
+                    'day': 1,
+                    'date': forecast_dates[0].strftime('%Y-%m-%d') if hasattr(forecast_dates[0], 'strftime') else str(forecast_dates[0]),
+                    'action': 'КУПИТЬ',
+                    'shares': shares_to_buy,
+                    'price': current_price,
+                    'operation_profit': profit,
+                    'reason': f'Простая стратегия - ожидаем рост {price_change*100:.1f}%'
+                })
+                
+                recommendations.append({
+                    'day': len(predictions),
+                    'date': forecast_dates[-1].strftime('%Y-%m-%d') if hasattr(forecast_dates[-1], 'strftime') else str(forecast_dates[-1]),
+                    'action': 'ПРОДАТЬ',
+                    'shares': shares_to_buy,
+                    'price': predictions[-1],
+                    'operation_profit': profit,
+                    'reason': f'Закрытие позиции с прибылью {profit:.2f}'
+                })
+                
+                return recommendations, profit, []
     
     # Создаем единый список всех торговых точек
     trading_points = []
@@ -126,9 +171,10 @@ def calculate_trading_strategy(predictions, forecast_dates, initial_investment,
         
         if point['type'] == 'buy':
             # Покупка в локальном минимуме (используем все доступные средства)
-            if cash > price:  # Проверяем что можем купить хотя бы одну акцию
-                shares_to_buy = int(cash / price)
-                if shares_to_buy > 0:
+            # Для дорогих акций разрешаем покупку дробных акций
+            if cash >= price * 0.1:  # Можем купить минимум 0.1 акции
+                shares_to_buy = cash / price  # Покупаем дробные акции
+                if shares_to_buy >= 0.1:  # Минимальное количество 0.1 акции
                     cost = shares_to_buy * price
                     shares += shares_to_buy
                     cash -= cost
@@ -262,9 +308,9 @@ def generate_recommendations_text(recommendations, expected_profit, profit_perce
     """
     
     if not recommendations:
-        return f"<b>НЕТ ТОРГОВЫХ ВОЗМОЖНОСТЕЙ ДЛЯ {ticker}</b>"
+        return f"❌ НЕТ ТОРГОВЫХ ВОЗМОЖНОСТЕЙ ДЛЯ {ticker}"
     
-    text = f"<b>ТОРГОВЫЕ РЕКОМЕНДАЦИИ ДЛЯ {ticker}</b>\n\n"
+    text = f"📈 ТОРГОВЫЕ РЕКОМЕНДАЦИИ ДЛЯ {ticker}\n\n"
     
     for rec in recommendations:
         date = rec.get('date', 'Дата не указана')
@@ -283,27 +329,27 @@ def generate_recommendations_text(recommendations, expected_profit, profit_perce
         
         # Определяем действие и цветовое оформление в стиле логов
         if 'КУПИТЬ' in action or 'ПОКУПАТЬ' in action:
-            action_code = "BUY"
-            # Красный цвет для покупки (жирный подчеркнутый)
-            formatted_line = f"<b><span style='color: red'>[TRADE] {date} {ticker} {action_code} {price_text} profit:{profit_text}</span></b>"
+            action_code = "КУПИТЬ"
+            # Красный цвет для покупки
+            formatted_line = f"🔴 [ТОРГИ] {date} {ticker} {action_code} {price_text} прибыль:{profit_text}"
         elif 'ПРОДАТЬ' in action:
-            action_code = "SELL"
-            # Зеленый цвет для продажи (жирный курсив)
-            formatted_line = f"<b><span style='color: green'>[TRADE] {date} {ticker} {action_code} {price_text} profit:{profit_text}</span></b>"
+            action_code = "ПРОДАТЬ"
+            # Зеленый цвет для продажи
+            formatted_line = f"🟢 [ТОРГИ] {date} {ticker} {action_code} {price_text} прибыль:{profit_text}"
         elif 'ШОРТ' in action or 'КОРОТКАЯ' in action:
-            action_code = "SELL_SHORT"
-            # Зеленый цвет для продажи (жирный курсив)
-            formatted_line = f"<b><span style='color: green'>[TRADE] {date} {ticker} {action_code} {price_text} profit:{profit_text}</span></b>"
+            action_code = "ПРОДАТЬ_КОРОТКО"
+            # Зеленый цвет для продажи
+            formatted_line = f"🟢 [ТОРГИ] {date} {ticker} {action_code} {price_text} прибыль:{profit_text}"
         else:
-            action_code = "HOLD"
+            action_code = "ДЕРЖАТЬ"
             # Обычный формат для ожидания
-            formatted_line = f"<code>[TRADE] {date} {ticker} {action_code} {price_text} profit:{profit_text}</code>"
+            formatted_line = f"⚪ [ТОРГИ] {date} {ticker} {action_code} {price_text} прибыль:{profit_text}"
         
         # Добавляем отформатированную строку
         text += f"{formatted_line}\n"
     
     # Итоговая прибыль
-    text += f"\n<b>[SUMMARY] Total_profit: {expected_profit:.2f}</b>"
+    text += f"\n💰 [ИТОГО] Общая_прибыль: {expected_profit:.2f}\n"
     
     return text
 
