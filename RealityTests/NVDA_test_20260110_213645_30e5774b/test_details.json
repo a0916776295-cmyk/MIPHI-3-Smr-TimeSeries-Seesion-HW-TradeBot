@@ -1,0 +1,45 @@
+{
+  "test_id": "30e5774b",
+  "user_id": 789012,
+  "username": "test_user",
+  "ticker": "NVDA",
+  "target_date": "2026-01-12",
+  "predictions": [
+    190.0,
+    195.0,
+    200.0,
+    195.0,
+    185.0
+  ],
+  "forecast_dates": [
+    "2026-01-10",
+    "2026-01-11",
+    "2026-01-12",
+    "2026-01-13",
+    "2026-01-14"
+  ],
+  "amount": 100,
+  "model_name": "LSTM",
+  "trading_recommendations": [
+    {
+      "action": "BUY",
+      "date": "2026-01-10",
+      "price": 190.0,
+      "quantity": 0.5,
+      "profit": 0
+    },
+    {
+      "action": "SELL",
+      "date": "2026-01-12",
+      "price": 200.0,
+      "quantity": 0.5,
+      "profit": 5.0
+    }
+  ],
+  "expected_profit": 5.0,
+  "profit_percent": 2.6,
+  "created_at": "2026-01-10 21:36:45",
+  "status": "pending",
+  "folder": "RealityTests/NVDA_test_20260110_213645_30e5774b",
+  "forecast_days": 5
+}

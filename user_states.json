@@ -1,11 +1,31 @@
 {
   "8367830040": {
-    "ticker": "NFLX",
+    "ticker": "TSLA",
     "amount": 1000,
-    "forecast_days": 25,
-    "mode": "offering_reality_test",
-    "temp_forecast": {
-      "ticker": "NFLX",
-      "amount": 1000,
-      "model_name": "Stacked Ensemble",
-      "predictions": 
+    "forecast_days": 30,
+    "mode": "viewing_tests",
+    "temp_forecast": null,
+    "user_tests_list": [
+      "a37e8293",
+      "d46336eb",
+      "d078944a",
+      "56920877",
+      "3a0d522b"
+    ]
+  },
+  "8367830040": {
+    "ticker": "NVDA",
+    "amount": 1000,
+    "forecast_days": 30,
+    "mode": "viewing_tests",
+    "temp_forecast": null,
+    "user_tests_list": [
+      "a37e8293",
+      "d46336eb",
+      "d078944a",
+      "73b2d37f",
+      "56920877",
+      "3a0d522b"
+    ]
+  }
+}

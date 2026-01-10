@@ -47,6 +47,11 @@ def calculate_trading_strategy(predictions, forecast_dates, initial_investment,
     recommendations = []
     trades = []
     
+    # Проверяем наличие данных
+    if len(predictions) == 0:
+        print("⚠️ Нет данных для анализа")
+        return recommendations, 0.0, trades
+    
     # Анализируем общий тренд
     price_change = (predictions[-1] - current_price) / current_price
     

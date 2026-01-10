@@ -52,11 +52,15 @@ USER_STATES_FILE = "user_states.json"
 def save_user_states():
     """Сохранить состояния пользователей в файл"""
     try:
+        # Конвертируем numpy типы перед сохранением
+        serializable_states = convert_numpy_types(user_states)
         with open(USER_STATES_FILE, 'w', encoding='utf-8') as f:
-            json.dump(user_states, f, ensure_ascii=False, indent=2)
+            json.dump(serializable_states, f, ensure_ascii=False, indent=2)
         safe_print(f"💾 [{datetime.now().strftime('%H:%M:%S')}] Состояния пользователей сохранены")
     except Exception as e:
         safe_print(f"❌ Ошибка сохранения состояний: {e}")
+        import traceback
+        safe_print(f"Детали ошибки сохранения: {traceback.format_exc()}")
 
 def load_user_states():
     """Загрузить состояния пользователей из файла"""
@@ -379,6 +383,15 @@ def convert_numpy_types(obj):
 async def create_structured_reality_test(user_id, username, forecast_data, target_date, message):
     """Создает структурированный тест реальности с сохранением в отдельную папку"""
     try:
+        safe_print(f"🔧 [{datetime.now().strftime('%H:%M:%S')}] НАЧАЛО create_structured_reality_test")
+        safe_print(f"   👤 User: {user_id} ({username})")
+        safe_print(f"   📅 Target Date: {target_date}")
+        safe_print(f"   📊 Forecast Data Keys: {list(forecast_data.keys()) if forecast_data else 'НЕТ ДАННЫХ!'}")
+        
+        if not forecast_data:
+            safe_print(f"❌ [{datetime.now().strftime('%H:%M:%S')}] forecast_data пуст!")
+            return {"success": False, "error": "Данные прогноза отсутствуют"}
+        
         # Генерируем уникальный ID теста
         test_id = str(uuid.uuid4())[:8]
         current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -437,10 +450,10 @@ async def create_structured_reality_test(user_id, username, forecast_data, targe
             trading_file = os.path.join(test_folder, "trading_strategy.json")
             with open(trading_file, 'w', encoding='utf-8') as f:
                 json.dump({
-                    "recommendations": forecast_data['trading_recommendations'],
-                    "expected_profit": forecast_data.get('expected_profit', 0),
-                    "profit_percent": forecast_data.get('profit_percent', 0),
-                    "investment_amount": forecast_data['amount'],
+                    "recommendations": convert_numpy_types(forecast_data['trading_recommendations']),
+                    "expected_profit": convert_numpy_types(forecast_data.get('expected_profit', 0)),
+                    "profit_percent": convert_numpy_types(forecast_data.get('profit_percent', 0)),
+                    "investment_amount": convert_numpy_types(forecast_data['amount']),
                     "ticker": forecast_data['ticker'],
                     "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 }, f, ensure_ascii=False, indent=2)
@@ -467,13 +480,25 @@ async def create_structured_reality_test(user_id, username, forecast_data, targe
                 "target_date": target_date
             }
         else:
-            safe_print(f"❌ [{datetime.now().strftime('%H:%M:%S')}] Ошибка создания теста {test_id}")
+            safe_print(f"❌ [{datetime.now().strftime('%H:%M:%S')}] Ошибка создания теста {test_id} - add_reality_test вернул False")
+            safe_print(f"❌ Параметры add_reality_test:")
+            safe_print(f"   user_id: {user_id}")
+            safe_print(f"   ticker: {forecast_data.get('ticker', 'НЕТ!')}")
+            safe_print(f"   target_date: {target_date}")
+            safe_print(f"   predictions type: {type(forecast_data.get('predictions', 'НЕТ!'))}")
+            safe_print(f"   amount: {forecast_data.get('amount', 'НЕТ!')}")
+            safe_print(f"   model_name: {forecast_data.get('model_name', 'НЕТ!')}")
             return {"success": False, "error": "Failed to add to reality test system"}
             
     except Exception as e:
         safe_print(f"❌ [{datetime.now().strftime('%H:%M:%S')}] Ошибка создания структурированного теста: {str(e)}")
+        safe_print(f"❌ Тип ошибки: {type(e).__name__}")
+        safe_print(f"❌ User ID: {user_id}, Username: {username}")
+        safe_print(f"❌ Target Date: {target_date}")
+        safe_print(f"❌ Forecast Data Type: {type(forecast_data)}")
+        safe_print(f"❌ Forecast Data Keys: {list(forecast_data.keys()) if forecast_data and isinstance(forecast_data, dict) else 'НЕ СЛОВАРЬ'}")
         import traceback
-        safe_print(f"Детали ошибки: {traceback.format_exc()}")
+        safe_print(f"❌ Детали ошибки: {traceback.format_exc()}")
         return {"success": False, "error": str(e)}
 
 def get_user_test_status(user_id):
@@ -1254,6 +1279,48 @@ async def process_message(message: types.Message):
         await handle_reality_test_commands(message, state)
         return
     
+    # 🧪 СПЕЦИАЛЬНАЯ ОТЛАДОЧНАЯ КОМАНДА ДЛЯ ТЕСТИРОВАНИЯ
+    if message.text == "🧪 Тест":
+        safe_print(f"🧪 [{datetime.now().strftime('%H:%M:%S')}] {username} запросил тестовое создание теста реальности")
+        
+        # Создаем тестовый прогноз
+        import numpy as np
+        test_forecast = {
+            "ticker": "NVDA",
+            "amount": 100,
+            "model_name": "LSTM_TEST", 
+            "predictions": [190.0, 195.0, 200.0, 195.0, 185.0],
+            "forecast_days": 5,
+            "trading_recommendations": [
+                {
+                    "action": "КУПИТЬ",
+                    "date": "2026-01-10", 
+                    "price": 190.0,
+                    "quantity": 0.52,
+                    "profit": 0
+                },
+                {
+                    "action": "ПРОДАТЬ",
+                    "date": "2026-01-12",
+                    "price": 200.0, 
+                    "quantity": 0.52,
+                    "profit": 5.2
+                }
+            ],
+            "expected_profit": 5.2,
+            "profit_percent": 5.2,
+            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        }
+        
+        # Сохраняем в состояние
+        state["temp_forecast"] = test_forecast
+        state["mode"] = "offering_reality_test"
+        update_user_state(user_id, temp_forecast=test_forecast, mode="offering_reality_test")
+        
+        # Предлагаем создать тест
+        await offer_reality_test(message, state)
+        return
+
     # Выбор тикера из списка
     if message.text in POPULAR_TICKERS:
         old_ticker = state["ticker"]
@@ -1867,7 +1934,19 @@ async def handle_date_selection(message: types.Message, state: dict):
             
             # Создаем тест
             temp_forecast = state.get("temp_forecast")
+            safe_print(f"🧪 [{datetime.now().strftime('%H:%M:%S')}] Проверка temp_forecast:")
+            safe_print(f"   temp_forecast существует: {'ДА' if temp_forecast else 'НЕТ'}")
+            if temp_forecast:
+                safe_print(f"   temp_forecast тип: {type(temp_forecast)}")
+                safe_print(f"   temp_forecast ключи: {list(temp_forecast.keys()) if isinstance(temp_forecast, dict) else 'НЕ СЛОВАРЬ'}")
+                if isinstance(temp_forecast, dict):
+                    safe_print(f"   ticker: {temp_forecast.get('ticker', 'НЕТ')}")
+                    safe_print(f"   amount: {temp_forecast.get('amount', 'НЕТ')}")
+                    safe_print(f"   model_name: {temp_forecast.get('model_name', 'НЕТ')}")
+                    safe_print(f"   predictions тип: {type(temp_forecast.get('predictions', 'НЕТ'))}")
+            
             if not temp_forecast:
+                safe_print(f"❌ [{datetime.now().strftime('%H:%M:%S')}] temp_forecast отсутствует для {username}")
                 await message.answer("❌ Ошибка: прогноз не найден")
                 return
             
@@ -1876,6 +1955,7 @@ async def handle_date_selection(message: types.Message, state: dict):
             safe_print(f"⏳ [{datetime.now().strftime('%H:%M:%S')}] Начинаем создание теста для {username}")
             
             # Создаем тест с новой системой
+            safe_print(f"🚀 [{datetime.now().strftime('%H:%M:%S')}] Вызываем create_structured_reality_test")
             test_result = await create_structured_reality_test(
                 user_id,
                 username,
@@ -1883,6 +1963,11 @@ async def handle_date_selection(message: types.Message, state: dict):
                 target_date,
                 message
             )
+            
+            safe_print(f"🎯 [{datetime.now().strftime('%H:%M:%S')}] Результат create_structured_reality_test:")
+            safe_print(f"   success: {test_result.get('success', 'НЕТ КЛЮЧА')}")
+            safe_print(f"   error: {test_result.get('error', 'НЕТ ОШИБКИ')}")
+            safe_print(f"   test_id: {test_result.get('test_id', 'НЕТ ID')}")
             
             if test_result["success"]:
                 await message.answer(

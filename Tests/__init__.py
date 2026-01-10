@@ -1,4 +1,6 @@
-# Tests package initialization
-# Этот файл делает папку Tests пакетом Python
+# -*- coding: utf-8 -*-
+"""
+Пакет Tests для модулей тестирования
+"""
 
 __version__ = "1.0.0"
