@@ -8,7 +8,7 @@ if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
 # Настройка единого логгера
-log_file = os.path.join(log_dir, 'bot_activity.log')
+log_file = os.path.join(log_dir, 'bot_activity.txt')
 logging.basicConfig(
     filename=log_file,
     level=logging.INFO,

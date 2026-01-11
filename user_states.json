@@ -1,21 +1,10 @@
 {
   "8367830040": {
-    "ticker": "NVDA",
-    "amount": 1000,
-    "forecast_days": 20,
-    "mode": "test_details",
-    "temp_forecast": null,
-    "user_tests_list": [
-      "a37e8293",
-      "d46336eb",
-      "d078944a",
-      "73b2d37f",
-      "633cb22e",
-      "56920877",
-      "3a0d522b"
-    ],
-    "selected_test_id": "d46336eb",
-    "selected_test_number": 2
+    "ticker": null,
+    "amount": null,
+    "forecast_days": 30,
+    "mode": "normal",
+    "temp_forecast": null
   },
   "8367830040": {
     "ticker": null,

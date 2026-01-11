@@ -1,0 +1,328 @@
+{
+  "timestamp": "2026-01-11T11:58:31.243317",
+  "forecast_days": 30,
+  "total_models": 15,
+  "ensemble_models": 6,
+  "models": [
+    {
+      "name": "Ridge",
+      "rmse": 0.6500946240744601,
+      "mape": 0.18347673104486947,
+      "enhanced_score": 38000.51010925617,
+      "is_realistic": false,
+      "sanity_penalty": 38000.0,
+      "sanity_issues": [
+        "КРИТИЧНО: Отрицательные цены: 8 значений",
+        "КРИТИЧНО: Экстремальные изменения: до 310.0% за день",
+        "КРИТИЧНО: Экстремальная волатильность: диапазон 52.2x от текущей цены"
+      ],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": -900.8199372999577,
+        "max": 12634.75234003052
+      }
+    },
+    {
+      "name": "Stacked Ensemble",
+      "rmse": 6.480909750705742,
+      "mape": 2.1115367403325753,
+      "enhanced_score": 5.170097847593791,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": true,
+      "prediction_range": {
+        "min": 223.69976327174055,
+        "max": 251.77367943663404
+      }
+    },
+    {
+      "name": "TFT",
+      "rmse": 8.641213000940988,
+      "mape": 2.8153823204434336,
+      "enhanced_score": 6.893463796791722,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 220.47174072265625,
+        "max": 254.08187866210938
+      }
+    },
+    {
+      "name": "Adaptive Ensemble (weighted)",
+      "rmse": 18.88405123936868,
+      "mape": 6.411006869917823,
+      "enhanced_score": 15.142137928533423,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": true,
+      "prediction_range": {
+        "min": 237.64168199366452,
+        "max": 249.19643098951065
+      }
+    },
+    {
+      "name": "Weighted Ensemble (rank_based)",
+      "rmse": 20.020849867805158,
+      "mape": 6.81726868484872,
+      "enhanced_score": 16.059775512918225,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": true,
+      "prediction_range": {
+        "min": 239.3593774047177,
+        "max": 249.48385847607295
+      }
+    },
+    {
+      "name": "Weighted Ensemble (inverse_error)",
+      "rmse": 20.142987988659925,
+      "mape": 6.8384073279123445,
+      "enhanced_score": 16.15161379043565,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": true,
+      "prediction_range": {
+        "min": 237.64168199366452,
+        "max": 249.19643098951065
+      }
+    },
+    {
+      "name": "Weighted Ensemble (inverse_mape)",
+      "rmse": 20.150354849245545,
+      "mape": 6.821161930093533,
+      "enhanced_score": 16.15159697349994,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": true,
+      "prediction_range": {
+        "min": 237.7230925707982,
+        "max": 249.49653907542842
+      }
+    },
+    {
+      "name": "RandomForest",
+      "rmse": 22.78460676930316,
+      "mape": 7.860860425939616,
+      "enhanced_score": 18.307482866294094,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 224.9231343948678,
+        "max": 247.51163490337797
+      }
+    },
+    {
+      "name": "XGBoost",
+      "rmse": 23.00975563049964,
+      "mape": 7.925785534062922,
+      "enhanced_score": 18.48456460156862,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 224.45802327804566,
+        "max": 246.85845712523573
+      }
+    },
+    {
+      "name": "FEDformer",
+      "rmse": 23.385956408767388,
+      "mape": 8.010886533126628,
+      "enhanced_score": 18.773435446075162,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 237.06411743164062,
+        "max": 243.64639282226562
+      }
+    },
+    {
+      "name": "CatBoost",
+      "rmse": 26.01070478970121,
+      "mape": 9.086881712991818,
+      "enhanced_score": 20.933557866688393,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 224.23800105471665,
+        "max": 239.02195405116822
+      }
+    },
+    {
+      "name": "SARIMA",
+      "rmse": 27.05226629934946,
+      "mape": 8.87055991694712,
+      "enhanced_score": 21.597754384628757,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 259.87464342490955,
+        "max": 265.4308360991163
+      }
+    },
+    {
+      "name": "LSTM_OPT",
+      "rmse": 27.199406399662216,
+      "mape": 9.33692418775272,
+      "enhanced_score": 21.840661736089366,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 282.6617574961786,
+        "max": 290.9402874447178
+      }
+    },
+    {
+      "name": "Simple Average Ensemble",
+      "rmse": 27.509153099601004,
+      "mape": 9.17644035965454,
+      "enhanced_score": 22.009339277617066,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": true,
+      "prediction_range": {
+        "min": 241.14997990935734,
+        "max": 248.59031950603625
+      }
+    },
+    {
+      "name": "Autoformer",
+      "rmse": 32.68343027865743,
+      "mape": 11.529189104594083,
+      "enhanced_score": 26.33715792643843,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 231.81863403320312,
+        "max": 235.0172882080078
+      }
+    },
+    {
+      "name": "ARIMA",
+      "rmse": 33.213238945796874,
+      "mape": 10.887475156002074,
+      "enhanced_score": 26.515509808858432,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 259.87276046570406,
+        "max": 261.1530408911598
+      }
+    },
+    {
+      "name": "Transformer",
+      "rmse": 33.30735249197492,
+      "mape": 11.15398131756504,
+      "enhanced_score": 26.661341139651956,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 224.46482849121094,
+        "max": 242.93885803222656
+      }
+    },
+    {
+      "name": "LSTM",
+      "rmse": 34.47498622525865,
+      "mape": 12.465150581866972,
+      "enhanced_score": 27.872035532241142,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 227.15383911132812,
+        "max": 235.0991668701172
+      }
+    },
+    {
+      "name": "GRU",
+      "rmse": 35.956976215110274,
+      "mape": 13.110258277852255,
+      "enhanced_score": 29.10296083393287,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 222.9420928955078,
+        "max": 233.13418579101562
+      }
+    },
+    {
+      "name": "GRU_OPT",
+      "rmse": 44.512613764081536,
+      "mape": 15.549994506518031,
+      "enhanced_score": 535.8238279868125,
+      "is_realistic": false,
+      "sanity_penalty": 500.0,
+      "sanity_issues": [
+        "Подозрительные изменения: до 22.7% за день"
+      ],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 200.52478551057933,
+        "max": 209.75161165190815
+      }
+    },
+    {
+      "name": "Prophet",
+      "rmse": 93.00833042122846,
+      "mape": 27.29222337263067,
+      "enhanced_score": 73.29349830664913,
+      "is_realistic": true,
+      "sanity_penalty": 0.0,
+      "sanity_issues": [],
+      "is_ensemble": false,
+      "prediction_range": {
+        "min": 253.0097664806585,
+        "max": 265.7633574888501
+      }
+    }
+  ],
+  "best_model": {
+    "name": "Ridge",
+    "rmse": 0.6500946240744601,
+    "mape": 0.18347673104486947,
+    "enhanced_score": 38000.51010925617,
+    "is_realistic": false,
+    "sanity_issues": [
+      "КРИТИЧНО: Отрицательные цены: 8 значений",
+      "КРИТИЧНО: Экстремальные изменения: до 310.0% за день",
+      "КРИТИЧНО: Экстремальная волатильность: диапазон 52.2x от текущей цены"
+    ],
+    "is_ensemble": false,
+    "ensemble_details": null
+  },
+  "second_best_model": {
+    "name": "Stacked Ensemble",
+    "rmse": 6.480909750705742,
+    "mape": 2.1115367403325753,
+    "is_ensemble": true
+  }
+}

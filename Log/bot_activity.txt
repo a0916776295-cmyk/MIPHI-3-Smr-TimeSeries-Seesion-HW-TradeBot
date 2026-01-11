@@ -1,0 +1,42 @@
+2026-01-11 13:29:01,297 — INFO — [BOT] Bot started
+2026-01-11 13:29:02,500 — INFO — Start polling
+2026-01-11 13:29:02,688 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-11 13:29:02,883 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-11 13:29:02,885 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-11 13:29:02,889 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-11 13:29:03,464 — INFO — Update id=444783034 is handled. Duration 577 ms by bot id=8553314612
+2026-01-11 13:29:03,505 — INFO — Update id=444783035 is handled. Duration 625 ms by bot id=8553314612
+2026-01-11 13:29:03,533 — INFO — Update id=444783036 is handled. Duration 640 ms by bot id=8553314612
+2026-01-11 13:29:14,851 — INFO — [USER 8367830040] 🔄 Перезапуск
+2026-01-11 13:29:15,059 — INFO — Update id=444783037 is handled. Duration 203 ms by bot id=8553314612
+2026-01-11 13:29:50,678 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-11 13:29:51,286 — INFO — Update id=444783038 is handled. Duration 608 ms by bot id=8553314612
+2026-01-11 13:30:38,238 — INFO — [USER 8367830040] 🪟 MSFT
+2026-01-11 13:30:38,807 — INFO — Update id=444783039 is handled. Duration 563 ms by bot id=8553314612
+2026-01-11 13:30:40,943 — INFO — [USER 8367830040] 💵 Сумма
+2026-01-11 13:30:41,287 — INFO — Update id=444783040 is handled. Duration 344 ms by bot id=8553314612
+2026-01-11 13:31:28,099 — INFO — [USER 8367830040] 💵 1000
+2026-01-11 13:31:28,720 — INFO — Update id=444783041 is handled. Duration 625 ms by bot id=8553314612
+2026-01-11 13:31:29,848 — INFO — [USER 8367830040] 📅 Горизонт прогноза
+2026-01-11 13:31:29,848 — INFO — [BOT] Opening forecast menu
+2026-01-11 13:31:30,147 — INFO — Update id=444783042 is handled. Duration 297 ms by bot id=8553314612
+2026-01-11 13:33:19,571 — INFO — [USER 8367830040] 📅 30 дней
+2026-01-11 13:33:20,345 — INFO — Update id=444783043 is handled. Duration 782 ms by bot id=8553314612
+2026-01-11 13:33:22,253 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-11 13:33:22,517 — INFO — [BOT] Starting analysis for MSFT, amount=1000, forecast=30
+2026-01-11 13:33:26,675 — INFO — [BOT] Created task folder: Tasks/MSFT-1000-2026-01-11-2026-01-09
+2026-01-11 13:33:26,710 — INFO — [BOT] Saved data to Tasks/MSFT-1000-2026-01-11-2026-01-09\MSFT_data.csv
+2026-01-11 13:33:30,479 — INFO — Chain [1] start processing
+2026-01-11 13:33:31,174 — INFO — Chain [1] done processing
+2026-01-11 13:33:31,355 — INFO — Chain [1] start processing
+2026-01-11 13:33:31,568 — INFO — Chain [1] done processing
+2026-01-11 13:38:23,592 — WARNING — From C:\Users\Eve\AppData\Roaming\Python\Python312\site-packages\keras\src\backend\tensorflow\core.py:219: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2026-01-11 13:38:44,603 — INFO — [BOT] Generated historical graph for MSFT
+2026-01-11 13:38:44,990 — INFO — [BOT] Generated full forecast graph for MSFT
+2026-01-11 13:38:45,359 — INFO — [BOT] Generated zoomed forecast graph for MSFT
+2026-01-11 13:38:45,361 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-11 13:38:45,362 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-11 13:38:51,379 — INFO — [BOT] Saved temporary forecast for reality testing: MSFT
+2026-01-11 13:38:51,624 — INFO — Update id=444783044 is handled. Duration 329375 ms by bot id=8553314612
+2026-01-11 13:38:56,922 — INFO — Connection established (tryings = 1, bot id = 8553314612)
