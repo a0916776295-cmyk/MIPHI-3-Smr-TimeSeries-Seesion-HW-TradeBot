@@ -2064,3 +2064,39 @@
 2026-01-11 01:09:38,333 — INFO — Update id=444783024 is handled. Duration 202 ms by bot id=8553314612
 2026-01-11 01:09:40,990 — INFO — [USER 8367830040] ▶️ Выполнить тест #2
 2026-01-11 01:09:41,605 — INFO — Update id=444783025 is handled. Duration 609 ms by bot id=8553314612
+2026-01-11 07:24:52,881 — INFO — [BOT] Bot started
+2026-01-11 07:24:54,053 — INFO — Start polling
+2026-01-11 07:24:54,129 — INFO — Run polling for bot @FinGolem_bot id=8553314612 - 'FinGolem'
+2026-01-11 07:25:02,667 — INFO — [USER 8367830040] 🔍 Тикер
+2026-01-11 07:25:03,263 — INFO — Update id=444783026 is handled. Duration 609 ms by bot id=8553314612
+2026-01-11 07:25:07,740 — INFO — [USER 8367830040] 🔍 GOOGL
+2026-01-11 07:25:08,047 — INFO — Update id=444783027 is handled. Duration 313 ms by bot id=8553314612
+2026-01-11 07:25:09,128 — INFO — [USER 8367830040] 💵 Сумма
+2026-01-11 07:25:09,480 — INFO — Update id=444783028 is handled. Duration 343 ms by bot id=8553314612
+2026-01-11 07:25:10,686 — INFO — [USER 8367830040] 💵 1000
+2026-01-11 07:25:10,994 — INFO — Update id=444783029 is handled. Duration 297 ms by bot id=8553314612
+2026-01-11 07:25:12,379 — INFO — [USER 8367830040] 📅 Горизонт прогноза
+2026-01-11 07:25:12,379 — INFO — [BOT] Opening forecast menu
+2026-01-11 07:25:12,686 — INFO — Update id=444783030 is handled. Duration 311 ms by bot id=8553314612
+2026-01-11 07:25:14,065 — INFO — [USER 8367830040] 📅 30 дней
+2026-01-11 07:25:14,386 — INFO — Update id=444783031 is handled. Duration 313 ms by bot id=8553314612
+2026-01-11 07:25:16,048 — INFO — [USER 8367830040] 📈 Анализ
+2026-01-11 07:25:16,341 — INFO — [BOT] Starting analysis for GOOGL, amount=1000, forecast=30
+2026-01-11 07:25:21,319 — INFO — [BOT] Created task folder: Tasks/GOOGL-1000-2026-01-11-2026-01-09
+2026-01-11 07:25:21,357 — INFO — [BOT] Saved data to Tasks/GOOGL-1000-2026-01-11-2026-01-09\GOOGL_data.csv
+2026-01-11 07:25:26,062 — INFO — Chain [1] start processing
+2026-01-11 07:25:26,704 — INFO — Chain [1] done processing
+2026-01-11 07:25:26,868 — INFO — Chain [1] start processing
+2026-01-11 07:25:27,014 — INFO — Chain [1] done processing
+2026-01-11 07:30:29,841 — WARNING — From C:\Users\Eve\AppData\Roaming\Python\Python312\site-packages\keras\src\backend\tensorflow\core.py:219: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2026-01-11 07:30:53,782 — INFO — [BOT] Generated historical graph for GOOGL
+2026-01-11 07:30:54,184 — INFO — [BOT] Generated full forecast graph for GOOGL
+2026-01-11 07:30:54,566 — INFO — [BOT] Generated zoomed forecast graph for GOOGL
+2026-01-11 07:30:54,568 — ERROR — Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-11 07:30:54,568 — WARNING — Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8553314612)
+2026-01-11 07:31:01,697 — INFO — [BOT] Saved temporary forecast for reality testing: GOOGL
+2026-01-11 07:31:01,991 — INFO — Update id=444783032 is handled. Duration 345936 ms by bot id=8553314612
+2026-01-11 07:31:06,140 — INFO — Connection established (tryings = 1, bot id = 8553314612)
+2026-01-11 07:32:52,860 — INFO — [USER 8367830040] ❌ Нет, спасибо
+2026-01-11 07:32:53,452 — INFO — Update id=444783033 is handled. Duration 593 ms by bot id=8553314612
