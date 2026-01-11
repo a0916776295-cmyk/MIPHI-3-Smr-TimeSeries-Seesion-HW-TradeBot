@@ -14,8 +14,13 @@ def train_and_predict_prophet(df: pd.DataFrame, forecast_days: int):
     if isinstance(close_series, pd.DataFrame):
         close_series = close_series.iloc[:, 0]
     
+    # Убираем timezone из индекса если есть
+    index_for_prophet = df.index
+    if hasattr(index_for_prophet, 'tz') and index_for_prophet.tz is not None:
+        index_for_prophet = index_for_prophet.tz_localize(None)
+    
     prophet_df = pd.DataFrame({
-        'ds': df.index,
+        'ds': index_for_prophet,
         'y': close_series.values.flatten()
     })
     

@@ -103,12 +103,8 @@ def train_and_predict_xgboost(df: pd.DataFrame, forecast_days: int):
         n_jobs=-1
     )
     
-    model.fit(
-        X_train_scaled, y_train,
-        eval_set=[(X_test_scaled, y_test)],
-        early_stopping_rounds=50,
-        verbose=False
-    )
+    # Более простое и надежное обучение XGBoost
+    model.fit(X_train_scaled, y_train)
     
     # Прогноз на тестовой выборке БЕЗ шума
     test_predictions = model.predict(X_test_scaled)

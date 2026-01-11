@@ -37,18 +37,49 @@ def load_reality_tests():
         else:
             reality_tests = {}
             safe_print("📁 Файл тестов реальности не найден, создается новый")
+    except json.JSONDecodeError as e:
+        safe_print(f"❌ Файл reality_tests.json поврежден: {e}")
+        safe_print("🔧 Создается резервная копия и новый файл...")
+        # Создаем бэкап поврежденного файла
+        import shutil
+        try:
+            shutil.copy(REALITY_TESTS_FILE, f"{REALITY_TESTS_FILE}.backup")
+            safe_print(f"💾 Резервная копия сохранена как {REALITY_TESTS_FILE}.backup")
+        except:
+            pass
+        reality_tests = {}
     except Exception as e:
         safe_print(f"❌ Ошибка загрузки тестов реальности: {e}")
         reality_tests = {}
 
 def save_reality_tests():
-    """Сохраняет тесты реальности в файл"""
+    """Сохраняет тесты реальности в файл с защитой от повреждения"""
     try:
-        with open(REALITY_TESTS_FILE, 'w', encoding='utf-8') as f:
+        import tempfile
+        import os
+        
+        # Атомарная запись: сначала во временный файл
+        temp_file = f"{REALITY_TESTS_FILE}.tmp"
+        with open(temp_file, 'w', encoding='utf-8') as f:
             json.dump(reality_tests, f, ensure_ascii=False, indent=2)
+        
+        # Заменяем основной файл только если запись успешна
+        if os.path.exists(temp_file):
+            if os.path.exists(REALITY_TESTS_FILE):
+                os.replace(temp_file, REALITY_TESTS_FILE)
+            else:
+                os.rename(temp_file, REALITY_TESTS_FILE)
+        
         safe_print(f"💾 Сохранено {len(reality_tests)} тестов реальности")
     except Exception as e:
         safe_print(f"❌ Ошибка сохранения тестов реальности: {e}")
+        # Удаляем временный файл если остался
+        temp_file = f"{REALITY_TESTS_FILE}.tmp"
+        try:
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
+        except:
+            pass
 
 def add_reality_test(user_id: int, ticker: str, target_date: str, predictions: List[float], 
                      forecast_dates: List[str], amount: int, model_name: str) -> bool:

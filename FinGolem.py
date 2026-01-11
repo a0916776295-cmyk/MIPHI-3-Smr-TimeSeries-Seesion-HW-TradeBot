@@ -49,6 +49,12 @@ user_states = {}
 # Файл для сохранения состояний пользователей
 USER_STATES_FILE = "user_states.json"
 
+# Настройка принудительного быстрого режима (для экстренных случаев)
+# По умолчанию используется ПОЛНЫЙ режим с 16 моделями для максимальной точности
+FORCE_FAST_MODE = os.getenv('FORCE_FAST_MODE', 'false').lower() == 'true'
+if FORCE_FAST_MODE:
+    print("⚡ Принудительный быстрый режим включен через переменную окружения")
+
 def save_user_states():
     """Сохранить состояния пользователей в файл"""
     try:
@@ -1476,17 +1482,77 @@ async def process_message(message: types.Message):
             model_start = time.time()
             
             # Уведомляем о начале обучения
-            await message.answer("🧠 Обучаю модели прогнозирования (LSTM, GRU, Autoformer и др.)...")
+            await message.answer("🧠 Обучаю модели прогнозирования...")
             safe_print(f"🤖 [{datetime.now().strftime('%H:%M:%S')}] Запуск обучения моделей прогнозирования")
             
+            # Промежуточное уведомление через 10 секунд
+            async def progress_notification():
+                await asyncio.sleep(10)
+                try:
+                    await message.answer("⏳ Обучение продолжается... Это может занять 1-2 минуты")
+                except:
+                    pass
+            
+            # Запускаем уведомление в фоне
+            progress_task = asyncio.create_task(progress_notification())
+            
             try:
-                best_model, second_best_model, comparison_data = compare_all_models(df, forecast_days, task_folder)
+                # Определяем режим обучения
+                if FORCE_FAST_MODE:
+                    fast_mode = True
+                    await message.answer("⚡ Принудительный быстрый режим (безопасный)")
+                else:
+                    # По умолчанию используем ПОЛНЫЙ режим для максимальной точности
+                    # Быстрый режим только при явном запросе через переменную окружения
+                    fast_mode = False
+                    
+                    if fast_mode:
+                        await message.answer("⚡ Используется быстрый режим обучения (ARIMA, Ridge, XGBoost и др.)")
+                    else:
+                        await message.answer("🧠 Используется полный режим обучения (включая нейросети)")
+                
+                try:
+                    best_model, second_best_model, comparison_data = compare_all_models(df, forecast_days, task_folder, fast_mode)
+                except Exception as full_mode_error:
+                    if not fast_mode and not FORCE_FAST_MODE:
+                        # Если полный режим падает, пробуем быстрый режим как fallback
+                        safe_print(f"⚠️ [{datetime.now().strftime('%H:%M:%S')}] Полный режим не удался, переключаемся на быстрый режим")
+                        await message.answer("⚠️ Переключаюсь на быстрый режим обучения...")
+                        best_model, second_best_model, comparison_data = compare_all_models(df, forecast_days, task_folder, True)
+                    else:
+                        raise full_mode_error
+                
+                # Отменяем уведомление о прогрессе если оно не выполнилось
+                progress_task.cancel()
+                
                 model_time = time.time() - model_start
                 safe_print(f"🏆 [{datetime.now().strftime('%H:%M:%S')}] Обучение завершено за {model_time:.1f}с. Лучшая модель: {best_model['model_name']}")
+                
             except Exception as model_error:
+                # Отменяем уведомление о прогрессе
+                progress_task.cancel()
+                
                 safe_print(f"❌ [{datetime.now().strftime('%H:%M:%S')}] Ошибка в обучении моделей: {str(model_error)}")
+                
+                # Детальное логирование для диагностики
+                safe_print(f"   Тип ошибки: {type(model_error).__name__}")
+                safe_print(f"   Размер данных: {df.shape}")
+                safe_print(f"   Период прогноза: {forecast_days} дней")
+                safe_print(f"   Быстрый режим: {'Да' if fast_mode else 'Нет'}")
+                
                 await message.answer("❌ Ошибка при обучении моделей. Попробуйте позже или выберите другой тикер.")
-                raise model_error
+                
+                # Отправляем подробное сообщение об ошибке
+                error_message = (
+                    f"❌ <b>Произошла ошибка</b>\n\n"
+                    f"Не удалось выполнить анализ для {ticker}\n\n"
+                    f"🔄 <b>Действия:</b>\n"
+                    f"• Попробуйте другой тикер или сумму\n"
+                    f"• Используйте /debug для проверки системы\n"
+                    f"• Перезапустите бота командой /start"
+                )
+                await message.answer(error_message, parse_mode='HTML')
+                return  # Прерываем выполнение вместо raise
             
             # Отладка: проверяем прогнозы
             safe_print(f"Best predictions shape: {best_model['predictions'].shape}")
